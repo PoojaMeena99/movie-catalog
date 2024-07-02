@@ -1,4 +1,4 @@
-function Genres() {
+const Genres = function(handleGenre, genre) {
     return (
         <div className="genres">
             <h3 className="genres_name"><b>Genres:</b></h3>

@@ -1,8 +1,4 @@
-"use client"
-
-import React, { useState} from 'react';
-
-const searchtext = function({filtered}) {
+const release_year = function(releaseYear, releaseYear) {
     const [year, setYear] = useState("");
     console.log(year, "year")
     return (
@@ -21,4 +17,4 @@ const searchtext = function({filtered}) {
     )
 
 }
-export default searchtext;
+export default release_year;

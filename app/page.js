@@ -10,12 +10,12 @@ import Pagination from './pagination';
 function page() {
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredItems, setFilteredItems] = useState(initial_data);
-  const [release_year, setRelease_year] = useState("");
-  const [search_text, setSearch_text] = useState("");
+  const [releaseYear, setReleaseYear] = useState("");
+  const [searchText, setSearchText] = useState("");
   const [rating, setRating] = useState("");
   const [genre, setGenre] = useState("");
-  const [movie_length, setMovie_length] = useState("")
-  
+
+
   const current_page_movies = filteredItems.slice((currentPage - 1) * 10, currentPage * 10);
   const totalPages = Math.ceil(filteredItems.length / 10);
 
@@ -24,33 +24,31 @@ function page() {
       setCurrentPage(currentPage - 1);
     }
   }
-  
+
   function handleNext() {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
     }
   }
-  
-  function handleReleaseYear() {
-    setRelease_year();
+
+  function handleSearchText(searchText) {
+    setSearchText();
   }
-  
-  function handleSearchText() {
-    setSearch_text();
+
+  function handleReleaseYear(releaseYear) {
+    setReleaseYear();
   }
-  
-  function handleGenre() {
+
+  function handleGenre(genre) {
     setGenre();
   }
-  
-  function handleRating() {
+
+  function handleRating(movieLength) {
     setRating();
   }
-  
-  function handleMovieLength() {
-    setMovie_length();
-  }
-  
+
+
+
   useEffect(() => {
     setFilteredItems(filtered);
     setCurrentPage(1);
@@ -66,10 +64,16 @@ function page() {
     <div className="container">
       <div className="row">
         <Filter_panel
-          handleReleaseYear={handleReleaseYear}
-          handleSearchText={handleSearchText}
-          handleMovieLength={handleMovieLength}
+          handleSearchText = {handleSearchText}
+          handleReleaseYear = {handleReleaseYear}
+          handleGenre = {handleGenre}
+          handleRating = {handleRating}
+          searchText = {searchText}
+          releaseYear = {releaseYear}
+          genre = {genre}
+          rating = {rating}
         />
+
         <Movie_panel movie_list={current_page_movies} />
       </div>
       <Pagination

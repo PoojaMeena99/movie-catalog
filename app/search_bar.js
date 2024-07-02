@@ -1,4 +1,4 @@
-const Search_bar = function() {
+const Search_bar = function(handleSearchText, searchText) {
     return (
         <>
             <div className="search">
@@ -11,8 +11,6 @@ const Search_bar = function() {
                 />
             </div>
         </>
-
-    )
-
-}
+    );
+};
 export default Search_bar;

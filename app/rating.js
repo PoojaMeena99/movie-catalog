@@ -1,4 +1,4 @@
-function Rating() {
+const Rating = function(handleRating, rating) {
     return (
         <div className="rating">
             <h3 className="rating_name"><b>Rating:</b></h3>
