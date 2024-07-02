@@ -43,23 +43,18 @@ body {
 }
 
 
-.movie_title{
+.movie_details_title{
   text-align: center;
   color: white;
   font-size: 40px;
   font-weight: bold;
   font-family: 'Niconne'
-}
+} 
+
 .movie_details{
-  
   color:white;
   font-family: cursive;
 }
-
-/* .movie_logo{
-  width: 200px;
-} */
-
 
 /* filterbar */
 
