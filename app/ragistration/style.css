@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Niconne&display=swap');
+.container {
+  display: flex;
+  justify-content: center;
+  background-color: #000;
+}
+
+.formContainer {
+  background-color: #f4c542;
+  padding: 20px 0px 20px 70px;
+  width: 400px;
+}
+
+.movie_title {
+  font-size: 24px;
+  font-family: 'Niconne';
+  margin-bottom: 30px;
+  color: #000;
+}
+
+.Register_title {
+  /* margin-bottom: 10px; */
+  font-family: cursive;
+}
+.search_name , .search_password{
+  font-family: cursive;
+}
+.input_email,.input_password{
+  width: 250px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #F9DE98;
+  border:#49494C 1px solid;
+  margin-bottom: 20px;
+
+}
+
+.button {
+  background-color: #000;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 200px;
+  box-sizing: border-box;
+  margin-top: 30px;
+}
+
+.loginLink {
+  color: #000;
+  text-decoration: none;
+  margin-top: 10px;
+  display: block;
+}

@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Niconne&display=swap');
+body {
+  background-color:white;
+}
+.container{
+  width:1200px;
+  margin: auto;
+  background-color:black;
+}
+/* .row{
+  border: 1px solid blue;
+} */
+.filterbox{
+  background-color:#F5CB5C;
+  /* border: 2px solid red; */
+}
+.gridbox{
+  /* border:3px solid red; */
+  background-color: black;
+}
+.bottam{
+  border-bottom: 2px solid white;
+}
+.display_movie{
+  
+  height: 328px;
+  margin: 10px;
+  justify-content: space-between;
+}
+/* .movie_grid{
+  border: 2px solid yellowgreen;
+} */
+.movie_image{
+  height: 100%;
+}
+.movie_info{
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    color: white;
+    padding-left: 40px;
+    align-items: center;
+}
+
+
+.movie_title{
+  text-align: center;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  font-family: 'Niconne'
+}
+.movie_details{
+  
+  color:white;
+  font-family: cursive;
+}
+
+/* .movie_logo{
+  width: 200px;
+} */
+
+
+/* filterbar */
+
+.movie_catalog {
+  font-family: 'Niconne', cursive;
+  text-align: center;
+}
+.search_name {
+  font-family: cursive;
+  display: block;
+  font-size: 18px;
+  color: black;
+  margin: 40px 0px 6px 0px;
+}
+#search{
+  width: 240px;
+  height: 50px;
+  padding: 5px;
+  border-radius: 3px;
+  background-color: #F9DE98;
+  border:#49494C 1px solid;
+  margin-bottom: 40px;
+}
+.filters_name{
+  font-family: cursive;
+  font-size: 30px;
+  color: black;
+  margin-bottom: 40px;
+}
+
+.genres_name{
+  font-family: cursive;
+  font-size: 18px;
+  color: black;
+}
+
+.checkbox_div{
+  color: black;
+} 
+
+.rating_name{
+  font-family: cursive;
+  font-size: 18px;
+  color: black;
+  margin-top: 60px;
+}
+
+.genres label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* .genres label, .year input {
+  display: block;
+  margin-bottom: 5px;
+} */
+
+.rating input {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.rating-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+}
+
+.year_name{
+  font-family: cursive;
+  font-size: 18px;
+  color: black;
+  margin-top: 60px;
+}
+
+#year{
+  width: 240px;
+  height: 50px;
+  padding: 5px;
+  border-radius: 3px;
+  background-color: #F9DE98;
+  border:#49494C 1px solid;
+  margin-bottom: 40px;
+}
+
+
+
+
+/* this is for page navigation bar */
+
+
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+
+.prev,.next {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 50px 0px 50px 0px;
+}
+
+.prev:hover,.next:hover {
+  background-color: #444;
+}
+
+.prev:disabled {
+  background-color: #666;
+  cursor: not-allowed;
+}
+
+.current-page,.total-pages {
+  margin: 0 10px;
+  font-size: 16px;
+  color: #fff;
+}
+
+.current-page {
+  font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* this is the code according to my style css
+.rating input {
+  width: 100%;
+  margin-bottom: 5px;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 5px;
+  background: black;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.rating input:hover {
+  opacity: 1;
+}
+
+.rating input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.rating input::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.rating-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.year input {
+  width: 100%;
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+} */
