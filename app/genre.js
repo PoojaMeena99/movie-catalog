@@ -1,4 +1,4 @@
-const Genres = function(handleGenre, genre) {
+const Genre = function({genre, handleGenre}) {
     return (
         <div className="genres">
             <h3 className="genres_name"><b>Genres:</b></h3>
@@ -6,7 +6,6 @@ const Genres = function(handleGenre, genre) {
             <label className="checkbox_div"><input type="checkbox" name="history" /> History</label>
             <label className="checkbox_div"><input type="checkbox" name="romantic" /> Romantic</label>
         </div>
-    )
-
-}
-export default Genres;
+    );
+};
+export default Genre;

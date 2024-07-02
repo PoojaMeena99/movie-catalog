@@ -1,4 +1,4 @@
-const Search_bar = function(handleSearchText, searchText) {
+const Search_bar = function({searchText, handleSearchText}) {
     return (
         <>
             <div className="search">

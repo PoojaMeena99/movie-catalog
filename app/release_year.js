@@ -1,4 +1,4 @@
-const release_year = function(releaseYear, releaseYear) {
+const Release_year = function({releaseYear, handleReleaseYear}) {
     const [year, setYear] = useState("");
     console.log(year, "year")
     return (
@@ -14,7 +14,6 @@ const release_year = function(releaseYear, releaseYear) {
             filtered(year)
         </div>
 
-    )
-
-}
-export default release_year;
+    );
+};
+export default Release_year;
