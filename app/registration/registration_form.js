@@ -2,7 +2,7 @@
 import React from 'react';
 import "./style.css";
 
-const Register = () => {
+const Registration = () => {
   return (
     <div className="container">
       <div className="formContainer">
@@ -21,4 +21,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Registration;
