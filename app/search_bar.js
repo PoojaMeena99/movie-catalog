@@ -6,8 +6,8 @@ const Search_bar = function({searchText, handleSearchText}) {
                 <input className="input_box"
                     type="text"
                     id="search"
-                // value={year}
-                // onChange={(e) => setYear(e.target.value)}
+                    value={searchText}
+                    onChange={(e) => handleSearchText(e.target.value)}
                 />
             </div>
         </>

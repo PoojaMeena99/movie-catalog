@@ -32,22 +32,20 @@ function page() {
   }
 
   function handleSearchText(searchText) {
-    setSearchText();
+    setSearchText(searchText);
   }
 
   function handleReleaseYear(releaseYear) {
-    setReleaseYear();
+    setReleaseYear(releaseYear);
   }
 
   function handleGenre(genre) {
-    setGenre();
+    setGenre(genre);
   }
 
   function handleRating(movieLength) {
     setRating();
   }
-
-
 
   useEffect(() => {
     setFilteredItems(filtered);
@@ -64,14 +62,14 @@ function page() {
     <div className="container">
       <div className="row">
         <Filter_panel
-          handleSearchText = {handleSearchText}
-          handleReleaseYear = {handleReleaseYear}
-          handleGenre = {handleGenre}
-          handleRating = {handleRating}
-          searchText = {searchText}
-          releaseYear = {releaseYear}
-          genre = {genre}
-          rating = {rating}
+          handleSearchText={handleSearchText}
+          handleReleaseYear={handleReleaseYear}
+          handleGenre={handleGenre}
+          handleRating={handleRating}
+          searchText={searchText}
+          releaseYear={releaseYear}
+          genre={genre}
+          rating={rating}
         />
 
         <Movie_panel movie_list={current_page_movies} />
