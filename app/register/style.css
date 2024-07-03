@@ -1,14 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Niconne&display=swap');
-.container {
+body{
+  background-color: #000;
+}
+.container{
   display: flex;
   justify-content: center;
-  background-color: #000;
+  margin: auto;
+  margin-top:150px ;
 }
 
 .formContainer {
   background-color: #f4c542;
   padding: 20px 0px 20px 70px;
   width: 400px;
+  /* height: 500px; */
 }
 
 .movie_title {
@@ -18,7 +23,7 @@
   color: #000;
 }
 
-.Register_title {
+.page_title {
   /* margin-bottom: 10px; */
   font-family: cursive;
 }
@@ -36,7 +41,7 @@
 
 }
 
-.button {
+.button_reginstarion,.button_login{
   background-color: #000;
   color: #fff;
   padding: 10px;
@@ -53,3 +58,4 @@
   margin-top: 10px;
   display: block;
 }
+

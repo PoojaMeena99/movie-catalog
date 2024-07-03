@@ -5,7 +5,7 @@ const RatingSlider = function({ rating, handleRating }) {
     const selectedRating = parseInt(event.target.value);
     handleRating(selectedRating);
   };
-
+  
   return (
     <div className="rating">
       <h3 className="rating_name"><b>Rating:</b></h3>

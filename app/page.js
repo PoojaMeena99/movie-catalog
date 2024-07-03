@@ -1,9 +1,10 @@
 "use client";
+
 import React, { useState, useEffect } from 'react';
 import initial_data from "./movies_data";
 import MoviePanel from "./movie_panel";
 import FilterPanel from "./filter_panel";
-import Pagination from './pagination';
+import Pagination from './pagination'; 
 
 const Page = function() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -57,18 +58,37 @@ const Page = function() {
 
   const applyFilter = function () {
     let filteredMovies = initial_data.filter(function (initial_movie) {
-      
-      let movie_genres = initial_movie.genres.split("|");
+  
+      let initial_movie_genres = initial_movie.genres.split("|");
       if ((initial_movie.title.toString().toLowerCase().includes(searchText.toLowerCase()) ||
                   initial_movie.plot.toLowerCase().includes(searchText.toLowerCase())) && 
             initial_movie.release_year.toString().includes(releaseYear) && 
-            genres.some(genre => movie_genres.includes(genre))
+            (genres.length == 0 || genres.some(selected_genre => initial_movie_genres.includes(selected_genre)))
           ) 
             {
         return true;
       }
     });
-    
+
+      //   let filtered = initial_data;
+
+    //   if (releaseYear) {
+    //     filtered = filtered.filter(item => item.release_year && item.release_year.updatedGenres.indexOf(selectedGenre).includes(releaseYear));
+    //   }
+
+    //   if (searchText) {
+    //     filtered = filtered.filter(item => typeof item.title === 'string' && item.title.toLowerCase().includes(searchText.toLowerCase()));
+    //   }
+
+    //   if (genre.length > 0) {
+    //     filtered = filtered.filter(item => 
+    //       item.genres && genre.some(selectedGenre => item.genres.toLowerCase().includes(selectedGenre.toLowerCase()))
+    //     );
+    //   }
+
+    //  if (rating !== "") {
+    //     filtered = filtered.filter(item => item.imdb_rating && parseFloat(item.imdb_rating) >= rating && parseFloat(item.imdb_rating) < (rating + 1));
+    //   }
 
     setFilteredItems(filteredMovies);
     setCurrentPage(1);
@@ -83,6 +103,8 @@ const Page = function() {
   return (
     <div className="container">
       <div className="row">
+       
+        
         <FilterPanel
           handleSearchText={handleSearchText}
           handleReleaseYear={handleReleaseYear}
@@ -94,13 +116,14 @@ const Page = function() {
           rating={rating}
         />
         <MoviePanel movie_list={current_page_movies} />
-      </div>
+
       <Pagination
         handlePrevious={handlePrevious}
         handleNext={handleNext}
         currentPage={currentPage}
         totalPages={totalPages}
       />
+      </div>
     </div>
   );
 };
