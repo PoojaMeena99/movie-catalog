@@ -1,4 +1,4 @@
-const ReleaseYear = function ({ releaseYear, handleReleaseYear }) {
+const ReleaseYear = function({ releaseYear, handleReleaseYear }) {
     return (
       <div className="year">
         <h3 className="year_name"><b>Release Year:</b></h3>

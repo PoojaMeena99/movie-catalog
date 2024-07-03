@@ -1,7 +1,7 @@
 import React from 'react';
 
-const RatingSlider = ({ rating, handleRating }) => {
-  const handleChange = (event) => {
+const RatingSlider = function({ rating, handleRating }) {
+  const handleChange = function(event) {
     const selectedRating = parseInt(event.target.value);
     handleRating(selectedRating);
   };

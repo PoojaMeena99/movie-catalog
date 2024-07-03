@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Genre = ({ genres = [], handleGenres }) => {
+const Genre = function({ genres = [], handleGenres }) {
   const genresNames = ["Drama", "History", "Adventure", "Romance", "Thriller", "Fantasy", "Crime"];
 
   const handleCheckboxChange = function(e) {
