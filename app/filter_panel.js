@@ -4,7 +4,7 @@ import ReleaseYear from "./release_year";
 import Rating from "./rating";
 import Genre from './genre';
 
-const FilterPanel = function ({ handleSearchText, handleReleaseYear, handleGenre, handleRating, searchText, releaseYear, genre, rating }) {
+const FilterPanel = function ({ handleSearchText, handleReleaseYear, handleGenres, handleRating, searchText, releaseYear, genres, rating }) {
   return (
     <div className="col-3 filterbox">
       <h1 className="movie_catalog">Movie<br />Catalog</h1>
@@ -19,8 +19,8 @@ const FilterPanel = function ({ handleSearchText, handleReleaseYear, handleGenre
           releaseYear={releaseYear}
         />
         <Genre
-          handleGenre={handleGenre}
-          genre={genre}
+          handleGenres={handleGenres}
+          genres={genres}
         />
         <Rating
           handleRating={handleRating}

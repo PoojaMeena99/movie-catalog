@@ -12,7 +12,7 @@ const Page = () => {
   const [releaseYear, setReleaseYear] = useState("");
   const [searchText, setSearchText] = useState("");
   const [rating, setRating] = useState("");
-  const [genre, setGenre] = useState([]);
+  const [genres, setGenres] = useState([]);
 
   const current_page_movies = filteredItems.slice((currentPage - 1) * 10, currentPage * 10);
   const totalPages = Math.ceil(filteredItems.length / 10);
@@ -37,45 +37,61 @@ const Page = () => {
     setReleaseYear(releaseYear);
   };
 
-  const handleGenre = (selectedGenre) => {
-    const updatedGenres = [...genre];
+  const handleGenres = (selectedGenre) => {
+    const updatedGenres = [...genres];
 
     if (updatedGenres.includes(selectedGenre)) {
-      updatedGenres.splice(updatedGenres.indexOf(selectedGenre), 1);
+      let index = updatedGenres.indexOf(selectedGenre);
+      updatedGenres.splice(index, 1);
     } else {
       updatedGenres.push(selectedGenre);
     }
-
-    setGenre(updatedGenres);
+    setGenres(updatedGenres);
   };
+
 
   const handleRating = (selectedRating) => {
     setRating(selectedRating);
   };
 
-  useEffect(() => {
-    let filtered = initial_data;
+  const applyFilter = function () {
+    let filteredMovies = initial_data.filter(function (initial_movie) {
+      if ((initial_movie.title.toLowerCase().includes(searchText.toLowerCase()) ||
+                  initial_movie.plot.toLowerCase().includes(searchText.toLowerCase())) && 
+            initial_movie.release_year.includes(releaseYear)) {
+        return true;
+      }
+    });
 
-    if (releaseYear) {
-      filtered = filtered.filter(item => item.release_year && item.release_year.toString().includes(releaseYear));
-    }
+    //   let filtered = initial_data;
 
-    if (searchText) {
-      filtered = filtered.filter(item => typeof item.title === 'string' && item.title.toLowerCase().includes(searchText.toLowerCase()));
-    }
+    //   if (releaseYear) {
+    //     filtered = filtered.filter(item => item.release_year && item.release_year.toString().includes(releaseYear));
+    //   }
 
-    if (genre.length > 0) {
-      filtered = filtered.filter(item => 
-        item.genres && genre.some(selectedGenre => item.genres.toLowerCase().includes(selectedGenre.toLowerCase()))
-      );
-    }
+    //   if (searchText) {
+    //     filtered = filtered.filter(item => typeof item.title === 'string' && item.title.toLowerCase().includes(searchText.toLowerCase()));
+    //   }
 
-   if (rating !== "") {
-      filtered = filtered.filter(item => item.imdb_rating && parseFloat(item.imdb_rating) >= rating && parseFloat(item.imdb_rating) < (rating + 1));
-    }
-    setFilteredItems(filtered);
+    //   if (genre.length > 0) {
+    //     filtered = filtered.filter(item => 
+    //       item.genres && genre.some(selectedGenre => item.genres.toLowerCase().includes(selectedGenre.toLowerCase()))
+    //     );
+    //   }
+
+    //  if (rating !== "") {
+    //     filtered = filtered.filter(item => item.imdb_rating && parseFloat(item.imdb_rating) >= rating && parseFloat(item.imdb_rating) < (rating + 1));
+    //   }
+
+    setFilteredItems(filteredMovies);
     setCurrentPage(1);
-  }, [releaseYear, searchText, genre, rating]);
+
+  };
+
+
+  useEffect(() => {
+    applyFilter();
+  }, [releaseYear, searchText, genres, rating]);
 
   return (
     <div className="container">
@@ -83,11 +99,11 @@ const Page = () => {
         <FilterPanel
           handleSearchText={handleSearchText}
           handleReleaseYear={handleReleaseYear}
-          handleGenre={handleGenre}
+          handleGenres={handleGenres}
           handleRating={handleRating}
           searchText={searchText}
           releaseYear={releaseYear}
-          genre={genre}
+          genres={genres}
           rating={rating}
         />
         <MoviePanel movie_list={current_page_movies} />
