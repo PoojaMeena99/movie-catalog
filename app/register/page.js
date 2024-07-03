@@ -2,17 +2,14 @@
 import React, { useState } from 'react';
 import "./style.css";
 
-const Page = () => {
+const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [responseMessage, setResponseMessage] = useState('');
 
-  const handleRegister = async () {
-    // event.preventDefault();
+  const handleRegister = function () {
 
-    // const url = 'https://92e673dec832461a80886388cbd4045d.api.mockbin.io/';
-
-    const url = "https://localhost:3010/register";
+    const url = 'http://localhost:3010/register';
 
     const data = {
       email: email,
@@ -27,26 +24,32 @@ const Page = () => {
       body: JSON.stringify(data)
     };
 
-    try {
-      const response = await fetch(url, options);
-      if (!response.ok) {
-        throw new Error('Network response was not ok ' + response.statusText);
-      }
-
-      const result = await response.json();
-      setResponseMessage('Registration successful!');
-      console.log('Success:', result);
-    } catch (error) {
-      setResponseMessage('Registration failed. ' + error.message);
-      console.error('Error:', error);
-    }
+    fetch(url, options)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok ' + response.statusText)
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (data.success) {
+          console.log('Success:', data.message);
+        } else {
+          console.log('Error:', data.message);
+        }
+        setResponseMessage(data.message);
+      })
+      .catch(error => {
+        setResponseMessage(data.message);
+        console.error('Error:', data.message);
+      });
   };
 
   return (
     <div className="container">
       <div className="formContainer">
         <div className="movie_title"><h1>Movie Catalog</h1></div>
-        <h2 className='page_title'><b>Register</b></h2>
+        <h2 className='Register_title'><b>Register</b></h2>
         <label className="search_name">Email:</label>
         <input
           type="email"
@@ -78,4 +81,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default Register;

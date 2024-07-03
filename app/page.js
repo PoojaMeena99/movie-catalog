@@ -14,6 +14,11 @@ const Page = function() {
   const [rating, setRating] = useState("");
   const [genres, setGenres] = useState([]);
 
+  // let isLoggedIn = document.cookie.split('; ').find(row => row.startsWith('is_logged_in='));
+  // if (isLoggedIn == true){
+  //   alert("hello");
+  // }
+
   const current_page_movies = filteredItems.slice((currentPage - 1) * 10, currentPage * 10);
   const totalPages = Math.ceil(filteredItems.length / 10);
 
@@ -63,32 +68,13 @@ const Page = function() {
       if ((initial_movie.title.toString().toLowerCase().includes(searchText.toLowerCase()) ||
                   initial_movie.plot.toLowerCase().includes(searchText.toLowerCase())) && 
             initial_movie.release_year.toString().includes(releaseYear) && 
-            (genres.length == 0 || genres.some(selected_genre => initial_movie_genres.includes(selected_genre)))
+            (genres.length == 0 || genres.some(selected_genre => initial_movie_genres.includes(selected_genre))) &&
+            initial_movie.imdb_rating >= rating
           ) 
             {
         return true;
       }
     });
-
-      //   let filtered = initial_data;
-
-    //   if (releaseYear) {
-    //     filtered = filtered.filter(item => item.release_year && item.release_year.updatedGenres.indexOf(selectedGenre).includes(releaseYear));
-    //   }
-
-    //   if (searchText) {
-    //     filtered = filtered.filter(item => typeof item.title === 'string' && item.title.toLowerCase().includes(searchText.toLowerCase()));
-    //   }
-
-    //   if (genre.length > 0) {
-    //     filtered = filtered.filter(item => 
-    //       item.genres && genre.some(selectedGenre => item.genres.toLowerCase().includes(selectedGenre.toLowerCase()))
-    //     );
-    //   }
-
-    //  if (rating !== "") {
-    //     filtered = filtered.filter(item => item.imdb_rating && parseFloat(item.imdb_rating) >= rating && parseFloat(item.imdb_rating) < (rating + 1));
-    //   }
 
     setFilteredItems(filteredMovies);
     setCurrentPage(1);
