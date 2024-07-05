@@ -1,12 +1,17 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import initial_data from "./movies_data";
 import MoviePanel from "./movie_panel";
 import FilterPanel from "./filter_panel";
-import Pagination from './pagination'; 
+import Pagination from './pagination';
+import Footer from './footer'
 
-const Page = function() {
+const Page = function () {
+  const router = useRouter();
+
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredItems, setFilteredItems] = useState(initial_data);
   const [releaseYear, setReleaseYear] = useState("");
@@ -14,35 +19,47 @@ const Page = function() {
   const [rating, setRating] = useState("");
   const [genres, setGenres] = useState([]);
 
-  // let isLoggedIn = document.cookie.split('; ').find(row => row.startsWith('is_logged_in='));
-  // if (isLoggedIn == true){
-  //   alert("hello");
-  // }
-
   const current_page_movies = filteredItems.slice((currentPage - 1) * 10, currentPage * 10);
   const totalPages = Math.ceil(filteredItems.length / 10);
 
-  const handlePrevious = function() {
+  useEffect(() => {
+    const loggedInCookie = document.cookie.split('; ').find(row => row.startsWith('IfLoggedIn='));
+    const isLoggedInValue = loggedInCookie ? loggedInCookie.split('=')[1] : null;
+
+    if (isLoggedInValue === 'true') {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isLoggedIn === false) {
+      router.push('/login');
+    }
+  }, [isLoggedIn, router]);
+
+  const handlePrevious = function () {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
     }
   };
 
-  const handleNext = function() {
+  const handleNext = function () {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
     }
   };
 
-  const handleSearchText = function(searchText) {
+  const handleSearchText = function (searchText) {
     setSearchText(searchText);
   };
 
-  const handleReleaseYear = function(releaseYear) {
+  const handleReleaseYear = function (releaseYear) {
     setReleaseYear(releaseYear);
   };
 
-  const handleGenres = function(selectedGenre) {
+  const handleGenres = function (selectedGenre) {
     console.log("handleGenres");
     const updatedGenres = [...genres];
 
@@ -52,26 +69,30 @@ const Page = function() {
     } else {
       updatedGenres.push(selectedGenre);
     }
-    console.log(updatedGenres,"updateee")
+    console.log(updatedGenres, "updateee")
     setGenres(updatedGenres);
   };
 
-
-  const handleRating = function(selectedRating) {
+  const handleRating = function (selectedRating) {
     setRating(selectedRating);
   };
 
+  const handleLogout = () => {
+    document.cookie = 'IfLoggedIn = ; Max-Age=0; path=/';
+    setIsLoggedIn(false);
+  };
+
+
   const applyFilter = function () {
     let filteredMovies = initial_data.filter(function (initial_movie) {
-  
+
       let initial_movie_genres = initial_movie.genres.split("|");
       if ((initial_movie.title.toString().toLowerCase().includes(searchText.toLowerCase()) ||
-                  initial_movie.plot.toLowerCase().includes(searchText.toLowerCase())) && 
-            initial_movie.release_year.toString().includes(releaseYear) && 
-            (genres.length == 0 || genres.some(selected_genre => initial_movie_genres.includes(selected_genre))) &&
-            initial_movie.imdb_rating >= rating
-          ) 
-            {
+        initial_movie.plot.toLowerCase().includes(searchText.toLowerCase())) &&
+        initial_movie.release_year.toString().includes(releaseYear) &&
+        (genres.length == 0 || genres.some(selected_genre => initial_movie_genres.includes(selected_genre))) &&
+        (initial_movie.imdb_rating >= rating)
+      ) {
         return true;
       }
     });
@@ -81,16 +102,17 @@ const Page = function() {
 
   };
 
-
   useEffect(() => {
     applyFilter();
   }, [releaseYear, searchText, genres, rating]);
 
+  if (isLoggedIn === null) {
+    return <h2>Loading...</h2>;
+  }
+
   return (
     <div className="container">
       <div className="row">
-       
-        
         <FilterPanel
           handleSearchText={handleSearchText}
           handleReleaseYear={handleReleaseYear}
@@ -103,13 +125,15 @@ const Page = function() {
         />
         <MoviePanel movie_list={current_page_movies} />
 
-      <Pagination
-        handlePrevious={handlePrevious}
-        handleNext={handleNext}
-        currentPage={currentPage}
-        totalPages={totalPages}
-      />
+        <Pagination
+          handlePrevious={handlePrevious}
+          handleNext={handleNext}
+          currentPage={currentPage}
+          totalPages={totalPages}
+        />
       </div>
+      <Footer />
+      <button className="logout_btn" onClick={handleLogout}>Logout</button>
     </div>
   );
 };

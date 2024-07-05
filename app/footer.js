@@ -1,7 +1,7 @@
 function Footer() {
     return (
       <>
-        <h1>hello Footer</h1>
+       <img className="footer_icon" src="navgurukul.png"></img>
       </>
     )
   

@@ -7,32 +7,31 @@ body {
   margin: auto;
   background-color:black;
 }
-/* .row{
-  border: 1px solid blue;
-} */
+
 .filterbox{
   background-color:#F5CB5C;
-  /* border: 2px solid red; */
+ 
 }
+
 .gridbox{
-  /* border:3px solid red; */
   background-color: black;
 }
+
 .bottam{
   border-bottom: 2px solid white;
 }
+
 .display_movie{
   
   height: 328px;
   margin: 10px;
   justify-content: space-between;
 }
-/* .movie_grid{
-  border: 2px solid yellowgreen;
-} */
+
 .movie_image{
   height: 100%;
 }
+
 .movie_info{
     max-width: 800px;
     margin: 40px auto;
@@ -41,7 +40,6 @@ body {
     padding-left: 40px;
     align-items: center;
 }
-
 
 .movie_details_title{
   text-align: center;
@@ -56,12 +54,11 @@ body {
   font-family: cursive;
 }
 
-/* filterbar */
-
 .movie_catalog {
   font-family: 'Niconne', cursive;
   text-align: center;
 }
+
 .search_name {
   font-family: cursive;
   display: block;
@@ -69,6 +66,7 @@ body {
   color: black;
   margin: 40px 0px 6px 0px;
 }
+
 #search{
   width: 240px;
   height: 50px;
@@ -78,6 +76,7 @@ body {
   border:#49494C 1px solid;
   margin-bottom: 40px;
 }
+
 .filters_name{
   font-family: cursive;
   font-size: 30px;
@@ -107,17 +106,12 @@ body {
   margin-bottom: 5px;
 }
 
-/* .genres label, .year input {
-  display: block;
-  margin-bottom: 5px;
-} */
-
-.rating input {
+.rating input, .length-labels {
   width: 100%;
   margin-bottom: 5px;
 }
 
-.rating-labels {
+.rating-labels, .movie-length {
   display: flex;
   justify-content: space-between;
   font-size: 10px;
@@ -139,13 +133,6 @@ body {
   border:#49494C 1px solid;
   margin-bottom: 40px;
 }
-
-
-
-
-/* this is for page navigation bar */
-
-
 
 .pagination {
   display: flex;
@@ -183,71 +170,25 @@ body {
   font-weight: bold;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* this is the code according to my style css
-.rating input {
-  width: 100%;
-  margin-bottom: 5px;
-  -webkit-appearance: none;
-  appearance: none;
-  height: 5px;
-  background: black;
-  outline: none;
-  opacity: 0.7;
-  transition: opacity 0.2s;
+.footer_icon{
+  width: 200px;
 }
 
-.rating input:hover {
-  opacity: 1;
-}
-
-.rating input::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: #ffffff;
+.logout_btn{
+  background-color: #F9DE98;
+  color: black;
+  padding: 10px;
+  border: none;
   cursor: pointer;
+  width: 250px;
+  box-sizing: border-box;
+  margin-top: 40px;
+  margin-left: 350px;
+  height: 50px;
+  margin-bottom: 50px;
 }
 
-.rating input::-moz-range-thumb {
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: #ffffff;
-  cursor: pointer;
-}
 
-.rating-labels {
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-}
 
-.year input {
-  width: 100%;
-  padding: 5px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-} */
+
+

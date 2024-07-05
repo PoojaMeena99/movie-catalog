@@ -26,7 +26,6 @@ const FilterPanel = function ({ handleSearchText, handleReleaseYear, handleGenre
           handleRating={handleRating}
           rating={rating}
         />
-    
       </div>
     </div>
   );

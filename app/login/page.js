@@ -1,9 +1,12 @@
 
 "use client"
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import '../register/style.css';
 
 const Login = () => {
+  const router = useRouter();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [responseMessage, setResponseMessage] = useState('');
@@ -34,7 +37,9 @@ const Login = () => {
       })
       .then(data => {
         if (data.success) {
-          document.cookie = "is_logged_in=true; path=/";
+          document.cookie = "IfLoggedIn = true; path=/";
+          router.push('/');
+
           console.log('Success:', data.message);
         } else {
           console.log('Error:', data.message);
@@ -77,7 +82,7 @@ const Login = () => {
         <p>{responseMessage}</p>
 
         <a href="/register" className="loginLink">
-          To Register, Click Here ➔
+          To Register Click Here ➔
         </a>
       </div>
     </div>
