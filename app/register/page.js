@@ -1,11 +1,14 @@
 "use client"
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import "./style.css";
 
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [responseMessage, setResponseMessage] = useState('');
+
+  const router = useRouter();
 
   const handleRegister = function () {
 
@@ -33,6 +36,7 @@ const Register = () => {
       })
       .then(data => {
         if (data.success) {
+          router.push('/login');
           console.log('Success:', data.message);
         } else {
           console.log('Error:', data.message);

@@ -37,7 +37,7 @@ const Login = () => {
       })
       .then(data => {
         if (data.success) {
-          document.cookie = "IfLoggedIn = true; path=/";
+          document.cookie = "IfLoggedIn=true; path=/";
           router.push('/');
 
           console.log('Success:', data.message);

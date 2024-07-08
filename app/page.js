@@ -16,14 +16,15 @@ const Page = function () {
   const [filteredItems, setFilteredItems] = useState(initial_data);
   const [releaseYear, setReleaseYear] = useState("");
   const [searchText, setSearchText] = useState("");
-  const [rating, setRating] = useState("");
+  const [rating, setRating] = useState(0);
   const [genres, setGenres] = useState([]);
 
   const current_page_movies = filteredItems.slice((currentPage - 1) * 10, currentPage * 10);
   const totalPages = Math.ceil(filteredItems.length / 10);
 
   useEffect(() => {
-    const loggedInCookie = document.cookie.split('; ').find(row => row.startsWith('IfLoggedIn='));
+    let cookies = document.cookie.split('; ');
+    const loggedInCookie = cookies.find(cookie => cookie.startsWith('IfLoggedIn'));
     const isLoggedInValue = loggedInCookie ? loggedInCookie.split('=')[1] : null;
 
     if (isLoggedInValue === 'true') {
@@ -37,7 +38,10 @@ const Page = function () {
     if (isLoggedIn === false) {
       router.push('/login');
     }
+
   }, [isLoggedIn, router]);
+
+  
 
   const handlePrevious = function () {
     if (currentPage > 1) {

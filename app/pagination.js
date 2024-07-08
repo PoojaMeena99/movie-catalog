@@ -12,6 +12,6 @@ function Pagination({handlePrevious, handleNext, currentPage, totalPages}) {
                 </button>
             </div>
         </div>
-    )
+    );
 }
 export default Pagination;
