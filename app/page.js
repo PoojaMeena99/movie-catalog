@@ -9,11 +9,14 @@ import Pagination from './pagination';
 import Footer from './footer'
 
 const Page = function () {
+
+  const sortedData = initial_data.sort((a, b) => b.release_year - a.release_year);
+  
   const router = useRouter();
 
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [filteredItems, setFilteredItems] = useState(initial_data);
+  const [filteredItems, setFilteredItems] = useState(sortedData);
   const [releaseYear, setReleaseYear] = useState("");
   const [searchText, setSearchText] = useState("");
   const [rating, setRating] = useState(0);
@@ -40,8 +43,6 @@ const Page = function () {
     }
 
   }, [isLoggedIn, router]);
-
-  
 
   const handlePrevious = function () {
     if (currentPage > 1) {
@@ -87,12 +88,12 @@ const Page = function () {
   };
 
 
-  const applyFilter = function () {
+  const applyFilter = function() {
     let filteredMovies = initial_data.filter(function (initial_movie) {
 
       let initial_movie_genres = initial_movie.genres.split("|");
       if ((initial_movie.title.toString().toLowerCase().includes(searchText.toLowerCase()) ||
-        initial_movie.plot.toLowerCase().includes(searchText.toLowerCase())) &&
+                    initial_movie.plot.toLowerCase().includes(searchText.toLowerCase())) &&
         initial_movie.release_year.toString().includes(releaseYear) &&
         (genres.length == 0 || genres.some(selected_genre => initial_movie_genres.includes(selected_genre))) &&
         (initial_movie.imdb_rating >= rating)
